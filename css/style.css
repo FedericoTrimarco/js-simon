@@ -11,4 +11,8 @@ body{
     align-items: center;
     height: 100vh;
     text-align: center;
+    font-size: 60px;
+}
+.random-numbers{
+    font-size: 40px;
 }

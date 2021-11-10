@@ -14,7 +14,12 @@ const result = document.querySelector('.result');
 // gen random number
 let randomNum = [];
 for(let i = 0; i < 5; i++){
-    let num = randomNumber();
+    let num;
+    // controllo numero univoco
+    do{
+        num = randomNumber();
+    } while(randomNum.includes(num));
+
     randomNum.push(num);
     containerNum.innerHTML +=`<h2>${i+1}°Numero: ${randomNum[i]}</h2>`
 }

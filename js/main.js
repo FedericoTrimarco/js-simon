@@ -8,6 +8,7 @@
 const containerNum = document.querySelector('.random-numbers');
 const containerTimer = document.querySelector('.timer');
 
+// gen random number
 let randomNum = [];
 for(let i = 0; i < 5; i++){
     let num = randomNumber();
@@ -15,28 +16,41 @@ for(let i = 0; i < 5; i++){
     containerNum.innerHTML +=`<h2>${i+1}°Numero: ${randomNum[i]}</h2>`
 }
 console.log(randomNum);
+// timer
 let second = 3;
-
 let myNumbers = [];
 const timer = setInterval( ()=>{
     containerTimer.innerHTML = `<h1>${second}</h1>`
+    // rimozione degli elementi nell'html
     if(second === 0){
         clearInterval(timer)
         containerNum.innerHTML =''
+        // inserimento numeri utenti
+        let newNum;
         for(let i = 1; i <= randomNum.length; i++){
-           const newNum = parseInt(prompt(`inserisci il ${i}° Numero:`)) 
-           console.log(newNum);
+           do{
+               newNum = parseInt(prompt(`inserisci il ${i}° Numero:`));
+           }while(isNaN(newNum))
+
            myNumbers.push(newNum);
         }
+        // creazione array elementi uguali tra randomNum & myNumbers
+        let pari = myNumbers.filter((el)=>{
+            if(randomNum.includes(el)){
+                return true;
+            }
+        });
         console.log(myNumbers);
+        console.log(pari);
     } else{
         second--
     }
 },1000);
 
 
-
-
+/*******************
+   F U N Z I O N I
+********************/
 function randomNumber(){
    return Math.floor(Math.random() * 999) + 1;
 }

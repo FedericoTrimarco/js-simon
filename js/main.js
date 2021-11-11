@@ -13,16 +13,14 @@ const result = document.querySelector('.result');
 
 // gen random number
 let randomNum = [];
-for(let i = 0; i < 5; i++){
-    let num;
-    // controllo numero univoco
-    do{
-        num = randomNumber();
-    } while(randomNum.includes(num));
+let difficulty;
 
-    randomNum.push(num);
-    containerNum.innerHTML +=`<h2>${i+1}°Numero: ${randomNum[i]}</h2>`
+while(isNaN(difficulty)){
+    difficulty = parseInt(prompt('quanti numeri vuoi provare a ricordare?'));
 }
+
+genRandomNumArray(difficulty, randomNum, containerNum);
+
 console.log(randomNum);
 // timer
 let second = 10;
@@ -65,7 +63,7 @@ const timer = setInterval( ()=>{
         let h2 = document.createElement('h2');
         
         if(pari.length === randomNum.length){
-            resultText = `hai indovinato ${pari.length} numeri: HAI VINTO!`;
+            resultText = `hai indovinato tutti i numeri: HAI VINTO!`;
         }else {
             resultText = `hai indovinato ${pari.length} numeri: RITENTA `;
         }
@@ -81,6 +79,20 @@ const timer = setInterval( ()=>{
 /*******************
    F U N Z I O N I
 ********************/
+
+function genRandomNumArray(number, arrray, container){
+    for(let i = 0; i < number; i++){
+        let num;
+        // controllo numero univoco
+        do{
+            num = randomNumber();
+        } while(arrray.includes(num));
+    
+        arrray.push(num);
+        container.innerHTML +=`<h2>${i+1}°Numero: ${arrray[i]}</h2>`
+    }
+};
+
 function randomNumber(){
    return Math.floor(Math.random() * 99) + 1;
-}
+};

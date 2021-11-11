@@ -25,7 +25,7 @@ for(let i = 0; i < 5; i++){
 }
 console.log(randomNum);
 // timer
-let second = 3;
+let second = 10;
 let myNumbers = [];
 
 const timer = setInterval( ()=>{
@@ -67,7 +67,7 @@ const timer = setInterval( ()=>{
         if(pari.length === randomNum.length){
             resultText = `hai indovinato ${pari.length} numeri: HAI VINTO!`;
         }else {
-            resultText = `hai indovinato solo ${pari.length} numeri: RITENTA `;
+            resultText = `hai indovinato ${pari.length} numeri: RITENTA `;
         }
         h2.append(resultText);
         result.append(h2);

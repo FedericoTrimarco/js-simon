@@ -41,7 +41,7 @@ const timer = setInterval( ()=>{
             // controllo del numero inseritoo se isNaN
            do{
                newNum = parseInt(prompt(`inserisci il ${i}° Numero:`));
-           }while(isNaN(newNum))
+           }while(isNaN(newNum) || myNumbers.includes(newNum))
         // creazione dell'array con i numeri scelti dall'utente
            myNumbers.push(newNum);
         }
